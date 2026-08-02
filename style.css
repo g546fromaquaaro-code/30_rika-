@@ -1,0 +1,107 @@
+:root {
+  --bg: #f4f7f5;
+  --card: #ffffff;
+  --text: #1f2924;
+  --muted: #68756e;
+  --primary: #2fa35b;
+  --primary-dark: #218247;
+  --line: #dfe7e2;
+  --correct: #198754;
+  --wrong: #d64545;
+  --shadow: 0 12px 35px rgba(26, 64, 43, 0.08);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+button { font: inherit; }
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px clamp(18px, 4vw, 56px);
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.eyebrow { margin: 0 0 4px; color: var(--primary); font-weight: 700; letter-spacing: .08em; }
+h1 { margin: 0; font-size: clamp(20px, 3vw, 30px); }
+main { width: min(1100px, calc(100% - 28px)); margin: 28px auto 60px; }
+.screen { display: none; }
+.screen.active { display: block; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+.hero { padding: 28px; display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+.hero h2 { font-size: clamp(26px, 4vw, 42px); margin: 12px 0; }
+.hero p { color: var(--muted); max-width: 650px; line-height: 1.8; }
+.badge { display: inline-block; background: #e6f6ec; color: var(--primary-dark); padding: 7px 12px; border-radius: 999px; font-weight: 700; }
+.progress-ring {
+  width: 110px; height: 110px; border-radius: 50%; flex: 0 0 auto;
+  background: conic-gradient(var(--primary) var(--progress, 0%), #e7ece9 0);
+  display: grid; place-items: center; position: relative;
+}
+.progress-ring::after { content: ""; width: 82px; height: 82px; border-radius: 50%; background: white; position: absolute; }
+.progress-ring span { z-index: 1; font-size: 22px; font-weight: 800; }
+.mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 22px; }
+.mode-card {
+  text-align: left; border: 1px solid var(--line); background: white; border-radius: 20px; padding: 24px;
+  cursor: pointer; transition: .2s; box-shadow: 0 7px 24px rgba(26, 64, 43, 0.05);
+}
+.mode-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+.mode-card h3 { margin: 14px 0 8px; font-size: 21px; }
+.mode-card p { color: var(--muted); min-height: 70px; line-height: 1.7; }
+.mode-card span { color: var(--primary-dark); font-weight: 800; }
+.mode-icon { width: 54px; height: 54px; border-radius: 16px; background: #e8f7ee; color: var(--primary-dark); display: grid; place-items: center; font-size: 22px; font-weight: 900; }
+.stats { margin-top: 22px; padding: 24px; }
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 12px; }
+.stat-grid div { padding: 18px; background: #f8faf9; border-radius: 16px; }
+.stat-grid strong { display:block; font-size: 28px; }
+.stat-grid span { color: var(--muted); }
+.ghost-btn, .primary-btn { border-radius: 12px; padding: 11px 18px; cursor: pointer; border: 1px solid var(--line); }
+.ghost-btn { background: white; color: var(--text); }
+.primary-btn { background: var(--primary); color: white; border-color: var(--primary); font-weight: 800; }
+.quiz-topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom: 14px; }
+.quiz-status { display:flex; gap:16px; align-items:center; }
+.progress-track { height: 10px; border-radius: 999px; background: #dfe7e2; overflow:hidden; margin-bottom:18px; }
+.progress-track div { height:100%; width:0; background:var(--primary); transition:.3s; }
+.question-card { padding: clamp(20px, 4vw, 40px); }
+.question-meta { display:flex; gap:12px; align-items:center; color:var(--muted); }
+.question-card h2 { font-size: clamp(22px, 3vw, 32px); margin: 24px 0; line-height: 1.5; }
+.diagram-area { min-height: 250px; display:grid; place-items:center; background:#fbfcfb; border:1px dashed #cfd9d3; border-radius:20px; padding:20px; }
+.choice-area { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:20px; }
+.choice-btn { border:2px solid var(--line); background:white; border-radius:15px; padding:16px; font-weight:700; cursor:pointer; }
+.choice-btn:hover { border-color:var(--primary); }
+.choice-btn.correct { background:#e8f7ee; border-color:var(--correct); color:var(--correct); }
+.choice-btn.wrong { background:#fdecec; border-color:var(--wrong); color:var(--wrong); }
+.choice-btn:disabled { cursor:default; }
+.feedback { margin-top:18px; padding:16px; border-radius:14px; line-height:1.7; }
+.feedback.correct { background:#e8f7ee; color:#166b3a; }
+.feedback.wrong { background:#fdecec; color:#9f2e2e; }
+.hidden { display:none !important; }
+.question-actions { display:flex; justify-content:space-between; margin-top:20px; }
+.classification-board { display:grid; grid-template-columns:repeat(5,1fr); width:100%; gap:10px; }
+.class-card { min-height:120px; padding:16px 10px; border-radius:14px; display:grid; place-items:center; text-align:center; font-weight:900; border:2px solid #d7e1dc; }
+.class-card small { font-weight:600; color:var(--muted); }
+.simple-animal { width:min(560px, 100%); }
+.simple-animal svg { width:100%; height:auto; }
+.result-card { max-width:650px; margin:30px auto; text-align:center; padding:40px; }
+.score-circle { width:160px; height:160px; border-radius:50%; margin:26px auto; background:#e7f7ed; display:grid; place-items:center; }
+.score-circle span { font-size:56px; font-weight:900; color:var(--primary-dark); }
+.score-circle small { margin-top:-55px; margin-left:74px; font-weight:800; }
+.category-results { text-align:left; margin:24px 0; }
+.category-row { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); }
+.result-actions { display:flex; justify-content:center; gap:12px; }
+
+@media (max-width: 780px) {
+  .mode-grid { grid-template-columns:1fr; }
+  .hero { align-items:flex-start; }
+  .progress-ring { width:88px; height:88px; }
+  .progress-ring::after { width:66px; height:66px; }
+  .classification-board { grid-template-columns:repeat(2,1fr); }
+  .choice-area { grid-template-columns:1fr; }
+}
