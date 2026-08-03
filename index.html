@@ -1,1 +1,70 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>理科 図問題トレーニング</title><link rel="stylesheet" href="local-image.css"></head><body><header><div><small>中学1年 理科｜単元7・8</small><h1>図問題トレーニング</h1></div><button id="homeBtn" class="ghost">ホーム</button></header><main><section id="home" class="screen active"><div class="hero card"><span class="tag">自宅用・画像は端末内に保存</span><h2>教科書の写真を使って図問題を練習</h2><p>最初に、単元7と単元8の写真を1枚ずつ登録してください。画像はGitHubへ送信されず、このiPadのブラウザ内だけに保存されます。</p><div id="status" class="notice"></div></div><div class="uploads"><div class="upload card"><h3>単元7の画像</h3><input id="page7Input" type="file" accept="image/*"><div id="page7Thumb" class="thumb">画像未登録</div></div><div class="upload card"><h3>単元8の画像</h3><input id="page8Input" type="file" accept="image/*"><div id="page8Thumb" class="thumb">画像未登録</div></div></div><div class="modes"><button data-mode="all"><b>図問題を始める</b><span>8問をランダム出題</span></button><button data-mode="review"><b>間違いだけ復習</b><span id="wrongCount">0問</span></button></div><p><button id="clearImages" class="ghost">登録画像を削除</button></p></section><section id="quiz" class="screen"><div class="top"><span id="counter">1/8</span><div class="bar"><i id="barFill"></i></div></div><article class="quiz card"><div class="meta"><span id="chapter">単元8</span><span id="topic">バッタ</span></div><h2 id="questionText">①は何ですか？</h2><div class="figure"><canvas id="canvas"></canvas></div><div id="choices" class="choices"></div><div id="feedback" class="feedback hidden"></div><div class="actions"><button id="hintBtn" class="ghost">ヒント</button><button id="nextBtn" class="primary hidden">次の問題</button></div></article></section><section id="result" class="screen"><article class="result card"><small>RESULT</small><h2>結果</h2><div id="score" class="score">0点</div><p id="resultText"></p><button id="againBtn" class="primary">もう一度</button></article></section></main><script src="local-image.js"></script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>中1理科 動物の分類トレーニング</title>
+  <link rel="stylesheet" href="local-image.css">
+</head>
+<body>
+<header>
+  <div>
+    <small>中学1年 理科｜動物の体の共通点と相違点</small>
+    <h1>動物の分類トレーニング</h1>
+  </div>
+  <button id="homeBtn" class="ghost">ホーム</button>
+</header>
+<main>
+  <section id="home" class="screen active">
+    <article class="hero card">
+      <span class="tag">段階学習</span>
+      <h2>やさしい問題から、検索表まで順番に覚えよう</h2>
+      <p>各ステージは「ミニ解説 → 問題 → 間違い直し」の順です。合格すると次のステージが開きます。</p>
+      <div class="summary"><b id="totalProgress">0%</b><span>全体の達成率</span></div>
+    </article>
+    <div id="stageList" class="stage-list"></div>
+    <article class="card quick-card">
+      <h3>まとめ練習</h3>
+      <div class="quick-actions">
+        <button id="mixedBtn" class="primary">全ステージからランダム</button>
+        <button id="reviewBtn" class="ghost">間違えた問題だけ</button>
+        <button id="resetBtn" class="danger">学習記録をリセット</button>
+      </div>
+    </article>
+  </section>
+
+  <section id="lesson" class="screen">
+    <article class="card lesson-card">
+      <div class="lesson-head"><span id="lessonNumber" class="tag"></span><button id="skipLesson" class="ghost">すぐ問題へ</button></div>
+      <h2 id="lessonTitle"></h2>
+      <div id="lessonBody" class="lesson-body"></div>
+      <button id="startStageBtn" class="primary wide">このステージを始める</button>
+    </article>
+  </section>
+
+  <section id="quiz" class="screen">
+    <div class="top"><span id="counter"></span><div class="bar"><i id="barFill"></i></div></div>
+    <article class="quiz card">
+      <div class="meta"><span id="stageLabel"></span><span id="topicLabel"></span></div>
+      <h2 id="questionText"></h2>
+      <div id="visual" class="visual hidden"></div>
+      <div id="choices" class="choices"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <div class="actions"><button id="hintBtn" class="ghost">ヒント</button><button id="nextBtn" class="primary hidden">次へ</button></div>
+    </article>
+  </section>
+
+  <section id="result" class="screen">
+    <article class="result card">
+      <small>RESULT</small>
+      <h2 id="resultTitle">結果</h2>
+      <div id="score" class="score"></div>
+      <p id="resultText"></p>
+      <div id="resultReview" class="result-review"></div>
+      <div class="result-actions"><button id="retryBtn" class="primary">もう一度</button><button id="resultHomeBtn" class="ghost">ホームへ</button></div>
+    </article>
+  </section>
+</main>
+<script src="local-image.js"></script>
+</body>
+</html>
